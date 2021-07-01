@@ -1,0 +1,21 @@
+﻿<Window x:Class="MWPFFrame.MyApplication.Container.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:languages="clr-namespace:MWPFFrame.LanguageManagers;assembly=MWPFFrame.LanguageManagers"
+        xmlns:local="clr-namespace:MWPFFrame.MyApplication.Container"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        mc:Ignorable="d">
+    <Window.Resources>
+        <languages:LanguageManager x:Key="LanguageManager" />
+    </Window.Resources>
+    <Grid>
+        <Button HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="{Binding Source={StaticResource LanguageManager}, Path=CurrentLanguageReSource[TestString]}"
+                Style="{StaticResource MainWindow_Button_Style}" />
+    </Grid>
+</Window>

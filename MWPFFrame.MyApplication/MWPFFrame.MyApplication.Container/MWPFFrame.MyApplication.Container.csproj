@@ -50,6 +50,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -64,6 +67,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Startup.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,9 +78,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MWPFFrame.Applications\MWPFFrame.Applications.csproj">
+      <Project>{F51E4DB1-EAAE-49EB-B8F4-9CED7335C099}</Project>
+      <Name>MWPFFrame.Applications</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MWPFFrame.IUtility\MWPFFrame.IUtility.csproj">
       <Project>{5cc03bdd-1690-4ade-9259-dbe173f9b99a}</Project>
       <Name>MWPFFrame.IUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MWPFFrame.LanguageManagers\MWPFFrame.LanguageManagers.csproj">
+      <Project>{74D8C081-E5E9-45DE-AD6F-E5CA61C9F848}</Project>
+      <Name>MWPFFrame.LanguageManagers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MWPFFrame.MyApplication.CustomControls\MWPFFrame.MyApplication.CustomControls.csproj">
+      <Project>{346b9f41-44fd-41ca-a808-71292327b7dd}</Project>
+      <Name>MWPFFrame.MyApplication.CustomControls</Name>
     </ProjectReference>
     <ProjectReference Include="..\MWPFFrame.MyApplication.IViewModel\MWPFFrame.MyApplication.IViewModel.csproj">
       <Project>{f84ae6d4-c6fd-4834-99cf-33f99e910db0}</Project>
@@ -86,10 +102,20 @@
       <Project>{40692c70-5001-4b43-9096-3a4937d726ad}</Project>
       <Name>MWPFFrame.MyApplication.TestModule.ViewModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MWPFFrame.UIControls\MWPFFrame.UIControls.csproj">
+      <Project>{2cf6a11c-2ad4-4174-99de-f8f44459893f}</Project>
+      <Name>MWPFFrame.UIControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MWPFFrame.Utility\MWPFFrame.Utility.csproj">
       <Project>{c947de5a-50be-4bd3-92aa-adce5e372806}</Project>
       <Name>MWPFFrame.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
