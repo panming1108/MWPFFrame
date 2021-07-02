@@ -9,13 +9,11 @@
         Width="800"
         Height="450"
         mc:Ignorable="d">
-    <Window.Resources>
-        <languages:LanguageManager x:Key="LanguageManager" />
-    </Window.Resources>
     <Grid>
         <Button HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="{Binding Source={StaticResource LanguageManager}, Path=CurrentLanguageReSource[TestString]}"
+                Click="Button_Click"
+                Content="{DynamicResource TestString}"
                 Style="{StaticResource MainWindow_Button_Style}" />
     </Grid>
 </Window>

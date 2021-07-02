@@ -14,31 +14,16 @@ namespace MWPFFrame.LanguageManagers
     {
         private static Dictionary<string, Uri[]> _globalDic = new Dictionary<string, Uri[]>();
 
-        private static Dictionary<string, string> _currentLanguageReSource;
-        public static Dictionary<string,string> CurrentLanguageReSource
-        {
-            get
-            {
-                if(_currentLanguageReSource == null)
-                {
-                    _currentLanguageReSource = new Dictionary<string, string>();
-                }
-                return _currentLanguageReSource;
-            }
-        }
-
+        private static ResourceDictionary _languageResourceDictionary = new ResourceDictionary();
+        public static ResourceDictionary LanguageResourceDictionary => _languageResourceDictionary;
         public static void InitLanguage(string languageName)
         {
-            _currentLanguageReSource = new Dictionary<string, string>();
-            Uri[] resourceDictionaries = _globalDic[languageName];
-            foreach (var uri in resourceDictionaries)
+            _languageResourceDictionary.Clear();
+            Uri[] uris = _globalDic[languageName];
+            foreach (var uri in uris)
             {
                 ResourceDictionary resourceDictionary = new ResourceDictionary() { Source = uri };
-                var enumerator = resourceDictionary.GetEnumerator();
-                while(enumerator.MoveNext())
-                {
-                    _currentLanguageReSource.Add(enumerator.Key.ToString(), enumerator.Value.ToString());
-                }
+                _languageResourceDictionary.MergedDictionaries.Add(resourceDictionary);
             }
         }
 

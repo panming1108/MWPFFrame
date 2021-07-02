@@ -10,30 +10,16 @@ namespace MWPFFrame.Applications
     public static class ThemeManager
     {
         private static Dictionary<string, Uri[]> _themeDic = new Dictionary<string, Uri[]>();
-        private static Dictionary<string, Brush> _currentTheme;
-        public static Dictionary<string, Brush> CurrentTheme
-        {
-            get
-            {
-                if (_currentTheme == null)
-                {
-                    _currentTheme = new Dictionary<string, Brush>();
-                }
-                return _currentTheme;
-            }
-        }
+        private static ResourceDictionary _themeResourceDictionary = new ResourceDictionary();
+        public static ResourceDictionary ThemeResourceDictionary => _themeResourceDictionary;
         public static void InitTheme(string themeName)
         {
-            _currentTheme = new Dictionary<string, Brush>();
-            Uri[] resourceDictionaries = _themeDic[themeName];
-            foreach (var uri in resourceDictionaries)
+            _themeResourceDictionary.Clear();
+            Uri[] uris = _themeDic[themeName];
+            foreach (var uri in uris)
             {
                 ResourceDictionary resourceDictionary = new ResourceDictionary() { Source = uri };
-                var enumerator = resourceDictionary.GetEnumerator();
-                while (enumerator.MoveNext())
-                {
-                    _currentTheme.Add(enumerator.Key.ToString(), enumerator.Value as Brush);
-                }
+                ThemeResourceDictionary.MergedDictionaries.Add(resourceDictionary);
             }
         }
         public static void RegisterTheme(string themeName, Uri[] resourceUris)

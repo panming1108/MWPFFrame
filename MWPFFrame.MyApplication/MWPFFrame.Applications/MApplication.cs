@@ -37,6 +37,8 @@ namespace MWPFFrame.Applications
             {
                 ThemeManager.InitTheme(themeName);
             }
+            Current.Resources.MergedDictionaries.Add(LanguageManager.LanguageResourceDictionary);
+            Current.Resources.MergedDictionaries.Add(ThemeManager.ThemeResourceDictionary);
             foreach (var resourceUri in resourceUris)
             {
                 var resourceDictionary = new ResourceDictionary()
