@@ -1,5 +1,49 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <system:String x:Key="TestString">TestString</system:String>
+                    xmlns:controls="clr-namespace:MWPFFrame.UIControls"
+                    xmlns:properties="clr-namespace:MWPFFrame.UIControls.AttachProperties">
+    <Style TargetType="controls:MButton">
+        <Setter Property="Background" Value="{DynamicResource MButton_Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MButton_BorderBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource MButton_Foreground}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Height" Value="34" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="properties:CommonAttachProperties.CornerRadius" Value="2" />
+        <Setter Property="properties:CommonAttachProperties.MouseOverBackground" Value="{DynamicResource MButton_MouseOverBackground}" />
+        <Setter Property="properties:CommonAttachProperties.MouseOverForeground" Value="{DynamicResource MButton_MouseOverForeground}" />
+        <Setter Property="properties:CommonAttachProperties.MouseOverBorderBrush" Value="{DynamicResource MButton_MouseOverBorderBrush}" />
+        <Setter Property="properties:CommonAttachProperties.UnEnabledBackground" Value="{DynamicResource MButton_UnEnabledBackground}" />
+        <Setter Property="properties:CommonAttachProperties.UnEnabledForeground" Value="{DynamicResource MButton_UnEnabledForeground}" />
+        <Setter Property="properties:CommonAttachProperties.UnEnabledBorderBrush" Value="{DynamicResource MButton_UnEnabledBorderBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:MButton">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(properties:CommonAttachProperties.CornerRadius)}">
+                        <ContentPresenter x:Name="PART_Content"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Border" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(properties:CommonAttachProperties.MouseOverBackground)}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(properties:CommonAttachProperties.MouseOverBorderBrush)}" />
+                            <Setter TargetName="PART_Content" Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(properties:CommonAttachProperties.MouseOverForeground)}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="PART_Border" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(properties:CommonAttachProperties.UnEnabledBackground)}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(properties:CommonAttachProperties.UnEnabledBorderBrush)}" />
+                            <Setter TargetName="PART_Content" Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(properties:CommonAttachProperties.UnEnabledForeground)}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

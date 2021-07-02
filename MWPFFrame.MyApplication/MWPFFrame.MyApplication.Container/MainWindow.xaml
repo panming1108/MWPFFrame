@@ -1,19 +1,19 @@
 ﻿<Window x:Class="MWPFFrame.MyApplication.Container.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:MWPFFrame.UIControls;assembly=MWPFFrame.UIControls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:languages="clr-namespace:MWPFFrame.LanguageManagers;assembly=MWPFFrame.LanguageManagers"
         xmlns:local="clr-namespace:MWPFFrame.MyApplication.Container"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:MWPFFrame.UIControls.AttachProperties;assembly=MWPFFrame.UIControls"
         Title="MainWindow"
         Width="800"
         Height="450"
         mc:Ignorable="d">
     <Grid>
-        <Button HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Click="Button_Click"
-                Content="{DynamicResource TestString}"
-                Style="{StaticResource MainWindow_Button_Style}" />
+        <controls:MButton HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Content="{DynamicResource TestString}" />
     </Grid>
 </Window>
