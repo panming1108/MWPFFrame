@@ -16,6 +16,12 @@ namespace MWPFFrame.LanguageManagers
 
         private static ResourceDictionary _languageResourceDictionary = new ResourceDictionary();
         public static ResourceDictionary LanguageResourceDictionary => _languageResourceDictionary;
+
+        public static string GetValue(string key)
+        {
+            return _languageResourceDictionary[key].ToString();
+        }
+
         public static void InitLanguage(string languageName)
         {
             _languageResourceDictionary.Clear();
