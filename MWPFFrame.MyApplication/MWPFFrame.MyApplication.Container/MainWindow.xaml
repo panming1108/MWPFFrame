@@ -12,8 +12,9 @@
         Height="450"
         mc:Ignorable="d">
     <Grid>
-        <controls:MButton HorizontalAlignment="Center"
+        <!--<controls:MButton HorizontalAlignment="Center"
                           VerticalAlignment="Center"
-                          Content="{DynamicResource TestString}" />
+                          Content="{DynamicResource TestString}" />-->
+        <controls:MBusyIndicator Content="请稍后" IsBusy="True" />
     </Grid>
 </Window>
